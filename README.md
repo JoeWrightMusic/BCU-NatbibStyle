@@ -9,7 +9,7 @@
 \usepackage{natbib}
 \newcommand*{\urlprefix}{Available from: }
 \newcommand*{\urldateprefix}{Accessed }
-\bibliographystyle{myBCUbst.bst}
+\bibliographystyle{BCU.bst}
 ```
 
 
