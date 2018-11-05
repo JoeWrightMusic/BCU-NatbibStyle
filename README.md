@@ -1,5 +1,5 @@
 # BCU.bst
-### A citation style for use with natbib in Latex
+### A citation style for use with natbib in LaTex
 
 
 - add the BCU.bst file to your working directory
