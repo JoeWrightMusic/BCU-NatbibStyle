@@ -455,7 +455,6 @@ INTEGERS { nameptr namesleft numnames }
 
 
 STRINGS  { bibinfo}
-
 FUNCTION {format.names}
 { 'bibinfo :=
   duplicate$ empty$ 'skip$ {
@@ -466,12 +465,24 @@ FUNCTION {format.names}
   numnames 'namesleft :=
     { namesleft #0 > }
     { s nameptr
-      "{vv~}{ll}{, jj}{, f{.}.}"
+      "{f.~}{vv~}{ll}{, jj}"
       format.name$
       bibinfo bibinfo.check
+      type$ "presentation" =
+        { check.speaker }
+        'skip$
+      if$
       't :=
       nameptr #1 >
         {
+          nameptr #10
+          #1 + =
+          numnames #10
+          > and
+            { "others" 't :=
+              #1 'namesleft := }
+            'skip$
+          if$
           namesleft #1 >
             { ", " * t * }
             {
@@ -1092,8 +1103,8 @@ FUNCTION {article}
       format.pages output
     }
   if$
-  format.doi output
-  new.block
+  %format.doi output
+  %new.block
   format.url output
   new.block
   format.note output
@@ -1128,11 +1139,11 @@ FUNCTION {book}
     }
   if$
   format.edition output
-  format.doi output
-  new.block
-  format.url output
-  new.block
-  format.note output
+  %format.doi output
+  %new.block
+  %format.url output
+  %new.block
+  %format.note output
   fin.entry
 }
 FUNCTION {booklet}
@@ -1145,8 +1156,8 @@ FUNCTION {booklet}
   new.block
   howpublished "howpublished" bibinfo.check output
   address "address" bibinfo.check output
-  format.doi output
-  new.block
+  %format.doi output
+  %new.block
   format.url output
   new.block
   format.note output
@@ -1185,11 +1196,11 @@ FUNCTION {inbook}
     }
   if$
   format.edition output
-  format.doi output
-  new.block
-  format.url output
-  new.block
-  format.note output
+  %format.doi output
+  %new.block
+  %format.url output
+  %new.block
+  %format.note output
   fin.entry
 }
 
@@ -1214,8 +1225,8 @@ FUNCTION {incollection}
       format.chapter.pages output
     }
   if$
-  format.doi output
-  new.block
+  %format.doi output
+  %new.block
   format.url output
   new.block
   format.note output
@@ -1246,8 +1257,8 @@ FUNCTION {inproceedings}
       format.pages output
     }
   if$
-  format.doi output
-  new.block
+  %format.doi output
+  %new.block
   format.url output
   new.block
   format.note output
@@ -1265,8 +1276,8 @@ FUNCTION {manual}
   organization "organization" bibinfo.check output
   address "address" bibinfo.check output
   format.edition output
-  format.doi output
-  new.block
+  %format.doi output
+  %new.block
   format.url output
   new.block
   format.note output
@@ -1285,8 +1296,8 @@ FUNCTION {mastersthesis}
   bbl.mthesis format.thesis.type output.nonnull
   school "school" bibinfo.warn output
   address "address" bibinfo.check output
-  format.doi output
-  new.block
+  %format.doi output
+  %new.block
   format.url output
   new.block
   format.note output
@@ -1302,8 +1313,8 @@ FUNCTION {misc}
   format.title output
   new.block
   howpublished "howpublished" bibinfo.check output
-  format.doi output
-  new.block
+  %format.doi output
+  %new.block
   format.url output
   new.block
   format.note output
@@ -1321,8 +1332,8 @@ FUNCTION {phdthesis}
   bbl.phdthesis format.thesis.type output.nonnull
   school "school" bibinfo.warn output
   address "address" bibinfo.check output
-  format.doi output
-  new.block
+  %format.doi output
+  %new.block
   format.url output
   new.block
   format.note output
@@ -1345,8 +1356,8 @@ FUNCTION {proceedings}
       format.publisher.address output
     }
   if$
-  format.doi output
-  new.block
+  %format.doi output
+  %new.block
   format.url output
   new.block
   format.note output
@@ -1365,8 +1376,8 @@ FUNCTION {techreport}
   format.tr.number output.nonnull
   institution "institution" bibinfo.warn output
   address "address" bibinfo.check output
-  format.doi output
-  new.block
+  %format.doi output
+  %new.block
   format.url output
   new.block
   format.note output
@@ -1380,8 +1391,8 @@ FUNCTION {unpublished}
   format.date "year" output.check
   date.block
   format.title "title" output.check
-  format.doi output
-  new.block
+  %format.doi output
+  %new.block
   format.url output
   new.block
   format.note "note" output.check
