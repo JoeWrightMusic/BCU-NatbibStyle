@@ -53,28 +53,45 @@
 
 ENTRY
   { address
+    archive
     author
     booktitle
+    casenumber
     chapter
     doi
     edition
     editor
     eid
+    entrysubtype
+    eprint
+    eventyear
     howpublished
     institution
     journal
     key
+    keywords
+    language
+    library
     month
     note
     number
+    options
     organization
     pages
     publisher
     school
     series
+    sortyear
     title
+    titleaddon
+    translator
     type
     url
+    urldate
+    urlyear
+    userb
+    venue
+    version
     volume
     year
   }
@@ -197,7 +214,20 @@ FUNCTION {tie.or.space.prefix}
 
 FUNCTION {capitalize}
 { "u" change.case$ "t" change.case$ }
-
+FUNCTION {is.online}
+{ type$ "software" =
+    { #0 }
+    { url empty$
+        { type$ "online" =
+            { #1 }
+            { #0 }
+          if$
+        }
+        { #1 }
+      if$
+    }
+  if$
+}
 FUNCTION {space.word}
 { " " swap$ * " " * }
  % Here are the language-specific definitions for explicit words.
@@ -403,11 +433,21 @@ FUNCTION {bibinfo.warn}
   if$
 }
 FUNCTION {format.url}
-{
-  url
+{ doi empty$
+    { url }
+    { "https://doi.org/" doi * }
+  if$
   duplicate$ empty$
     { pop$ "" }
     { "\urlprefix\url{" swap$ * "}" * }
+  if$
+  urlyear empty$
+    { urldate empty$
+        'skip$
+        { " [\urldateprefix{}" * urldate * "]" * }
+      if$
+    }
+    { " [\urldateprefix{}" * urlyear * "]" * }
   if$
 }
 
