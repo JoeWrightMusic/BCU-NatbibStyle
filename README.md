@@ -7,7 +7,7 @@
 
 ```
 \usepackage{natbib}
-\newcommand*{\urlprefix}{Available at: }
+\newcommand*{\urlprefix}{Available at }
 \newcommand*{\urldateprefix}{Accessed }
 \bibliographystyle{BCU.bst}
 ```
