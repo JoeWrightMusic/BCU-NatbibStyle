@@ -754,8 +754,8 @@ FUNCTION {word.in}
 FUNCTION {format.date}
 { year "year" bibinfo.check duplicate$ empty$
     {
-      "empty year in " cite$ * "; set to ????" * warning$
-       pop$ "????"
+      "empty year in " cite$ * "; set to n.d." * warning$
+       pop$ "n.d."
     }
     'skip$
   if$
@@ -1493,7 +1493,7 @@ FUNCTION {calc.label}
   "("
   *
   year duplicate$ empty$
-     { pop$ "????" }
+     { pop$ "n.d." }
      'skip$
   if$
   *
