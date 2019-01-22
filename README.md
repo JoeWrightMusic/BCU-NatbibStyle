@@ -9,6 +9,7 @@
 \usepackage{natbib}
 \newcommand*{\urlprefix}{Available at: }
 \newcommand*{\urldateprefix}{Accessed }
+\setcitestyle{notesep={: }}
 \bibliographystyle{BCU.bst}
 ```
 
