@@ -1104,7 +1104,7 @@ FUNCTION {article}
     }
   if$
   %format.doi output
-  %new.block
+  new.block
   format.url output
   new.block
   format.note output
