@@ -1141,8 +1141,6 @@ FUNCTION {book}
   format.edition output
   %format.doi output
   %new.block
-  %format.url output
-  %new.block
   %format.note output
   fin.entry
 }
@@ -1198,8 +1196,6 @@ FUNCTION {inbook}
   format.edition output
   %format.doi output
   %new.block
-  %format.url output
-  %new.block
   %format.note output
   fin.entry
 }
@@ -1226,8 +1222,6 @@ FUNCTION {incollection}
     }
   if$
   %format.doi output
-  %new.block
-  format.url output
   new.block
   format.note output
   fin.entry
